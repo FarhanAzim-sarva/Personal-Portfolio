@@ -10,7 +10,8 @@
 <meta property="og:title" content="Farhan Azim Aurronoy — Finance · Analytics · AI Product" />
 <meta property="og:description" content="Quantitative economics, finance, analytics, and AI product. Co-Founder & CFO at Sarva. Speaker, US AI Institute Hackathon 2026." />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://farhanazim-sarva.github.io/Farhan/" />
+<meta property="og:url" content="https://farhanazim-sarva.github.io/Personal-Portfolio/" />
+<meta property="og:image" content="https://farhanazim-sarva.github.io/Personal-Portfolio/assets/farhan-headshot.jpg" />
 <meta name="twitter:card" content="summary_large_image" />
 
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%230a0b0d'/><circle cx='50' cy='50' r='18' fill='%23e8c468'/></svg>">
@@ -79,6 +80,27 @@ body::before{
 .hero h1{font-family:var(--serif);font-weight:300;font-size:clamp(48px, 9vw, 132px);line-height:.96;letter-spacing:-.035em;margin:0 0 20px;color:var(--ink)}
 .hero h1 i{font-style:italic;color:var(--accent-soft);font-weight:400}
 .hero h1 .amp{font-family:var(--serif);font-style:italic;color:var(--ink-3);font-weight:300}
+
+/* hero portrait — small, monochrome treatment, sits beside the lede */
+.hero-portrait-row{display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:start;margin:14px 0 36px}
+.hero-portrait{
+  width:120px;height:120px;flex-shrink:0;
+  border:1px solid var(--line-2);
+  filter:grayscale(.4) contrast(1.05) brightness(.95);
+  position:relative;overflow:hidden;
+  transition:filter .35s ease;
+}
+.hero-portrait img{width:100%;height:100%;object-fit:cover;display:block}
+.hero-portrait::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg, rgba(232,196,104,.06), transparent 40%, rgba(10,11,13,.25));
+  pointer-events:none;
+}
+.hero-portrait:hover{filter:grayscale(0) contrast(1) brightness(1)}
+@media (max-width:680px){
+  .hero-portrait-row{grid-template-columns:1fr;gap:20px}
+  .hero-portrait{width:90px;height:90px}
+}
 .hero .lede{max-width:680px;font-size:19px;line-height:1.6;color:var(--ink-2);font-weight:300;margin:14px 0 36px}
 .hero .lede b{color:var(--ink);font-weight:500}
 
@@ -199,8 +221,13 @@ body::before{
 /* PRESS / SPEAKING */
 .press-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:24px}
 @media (max-width:880px){ .press-grid{grid-template-columns:1fr} }
-.press-feat{border:1px solid var(--accent);background:linear-gradient(180deg, rgba(232,196,104,.06), transparent);padding:36px 32px;position:relative;overflow:hidden}
-.press-feat::before{content:"01";position:absolute;top:18px;right:24px;font-family:var(--serif);font-size:120px;color:rgba(232,196,104,.07);font-weight:300;line-height:1}
+.press-feat{border:1px solid var(--accent);background:linear-gradient(180deg, rgba(232,196,104,.06), transparent);padding:0;position:relative;overflow:hidden;display:flex;flex-direction:column}
+.press-feat::before{content:"01";position:absolute;top:18px;right:24px;font-family:var(--serif);font-size:120px;color:rgba(232,196,104,.07);font-weight:300;line-height:1;z-index:1}
+.press-img{width:100%;aspect-ratio:16/9;overflow:hidden;background:#000;border-bottom:1px solid var(--accent);position:relative}
+.press-img img{width:100%;height:100%;object-fit:cover;display:block;filter:contrast(1.05)}
+.press-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg, transparent 50%, rgba(10,11,13,.4));pointer-events:none}
+.press-img .caption{position:absolute;bottom:12px;left:16px;right:16px;font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:var(--ink);text-transform:uppercase;z-index:2}
+.press-feat-body{padding:32px 32px 36px;position:relative;z-index:2}
 .press-feat .pre{font-family:var(--mono);font-size:11px;letter-spacing:.18em;color:var(--accent);text-transform:uppercase;margin-bottom:18px}
 .press-feat h3{font-family:var(--serif);font-weight:300;font-size:clamp(28px,3.5vw,44px);line-height:1.1;letter-spacing:-.025em;margin:0 0 16px}
 .press-feat h3 i{font-style:italic;color:var(--accent-soft)}
@@ -348,13 +375,18 @@ footer{padding:32px 0;border-top:1px solid var(--line);font-family:var(--mono);f
       Products, <span class="amp">&amp;</span> shipped.
     </h1>
 
-    <p class="lede">
-      I'm <b>Farhan Azim Aurronoy</b> — quantitative economist, founder, and analyst. I build
-      <b>financial models</b>, <b>analytics pipelines</b>, and <b>AI-powered products</b> that
-      turn ambiguous data into decisions executives can act on. Currently <b>Co-Founder &amp; CFO at Sarva</b>,
-      a multilingual AI SaaS for underserved businesses, and a 2026 speaker at the
-      <b>US AI Institute Hackathon</b>.
-    </p>
+    <div class="hero-portrait-row">
+      <div class="hero-portrait">
+        <img src="assets/farhan-headshot.jpg" alt="Farhan Azim Aurronoy" loading="lazy">
+      </div>
+      <p class="lede" style="margin:0">
+        I'm <b>Farhan Azim Aurronoy</b> — quantitative economist, founder, and analyst. I build
+        <b>financial models</b>, <b>analytics pipelines</b>, and <b>AI-powered products</b> that
+        turn ambiguous data into decisions executives can act on. Currently <b>Co-Founder &amp; CFO at Sarva</b>,
+        a multilingual AI SaaS for underserved businesses, and a 2026 speaker at the
+        <b>US AI Institute Hackathon</b>.
+      </p>
+    </div>
 
     <div class="hero-cta">
       <a class="btn primary" href="#projects">View case files <span class="arrow">→</span></a>
@@ -712,6 +744,11 @@ footer{padding:32px 0;border-top:1px solid var(--line);font-family:var(--mono);f
 
     <div class="press-grid">
       <div class="press-feat">
+        <div class="press-img">
+          <img src="assets/sarva-speaking.jpg" alt="Farhan Azim Aurronoy speaking on behalf of Sarva" loading="lazy">
+          <div class="caption">▲ Sarva pitch · "These stores weren't digitized."</div>
+        </div>
+        <div class="press-feat-body">
         <div class="pre">▲ FEATURED · UPCOMING 2026</div>
         <div class="track">Track: Global Perspectives &amp; Foundations</div>
         <h3>"AI Made Simple: <i>Foundations for the Next Generation."</i></h3>
@@ -722,6 +759,7 @@ footer{padding:32px 0;border-top:1px solid var(--line);font-family:var(--mono);f
         <div class="actions">
           <a class="btn primary" href="https://aihackathon.usaii.org/" target="_blank" rel="noopener">Event page <span class="arrow">↗</span></a>
           <a class="btn" href="mailto:farhanazim2015@gmail.com?subject=Speaking%20Inquiry">Book a talk</a>
+        </div>
         </div>
       </div>
 
